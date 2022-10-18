@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import fixCarValue from "../utils/fixCarValue";
+import CarCard from "./CarCard";
 import { setCars, filterNewCars, filterByYear, resetFilters, filterCarsOnSale } from './carSlice'
 
 export default function CarList() {
@@ -19,16 +19,13 @@ export default function CarList() {
     return (
 
         <div className="App">
-            <button type="button" onClick={() => { dispatch(filterNewCars()) }}>Filter new cars</button>
+            <button type="button" onClick={() => { dispatch(filterNewCars()) }}>Recent Cars</button>
             <button type="button" onClick={() => { dispatch(filterByYear(2005)) }}>Filter old cars</button>
             <button type="button" onClick={() => { dispatch(filterCarsOnSale()) }}> Filter cars on sale</button>
             <button type="button" onClick={() => { dispatch(resetFilters()) }}>Reset filters</button>
 
             {cars.map((car) => (<div key={car.id}>
-                <p>{car.nome_modelo}</p>
-                <p>{fixCarValue(car.valor_fipe)}</p>
-                <p>{car.timestamp_cadastro}</p>
-                <hr></hr>
+                <CarCard car={car}></CarCard>
             </div>))}
         </div>
     );
