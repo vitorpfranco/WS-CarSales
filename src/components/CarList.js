@@ -2,8 +2,9 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import CarCard from "./CarCard";
-import { setCars, filterNewCars, filterByYear, resetFilters, filterCarsOnSale } from './carSlice'
-
+import { setCars } from './carSlice'
+import styles from './CarList.module.scss'
+import { motion, AnimatePresence } from 'framer-motion'
 export default function CarList() {
     const cars = useSelector((state) => state.cars.value.filteredCars)
     const dispatch = useDispatch()
@@ -18,15 +19,12 @@ export default function CarList() {
     }, [])
     return (
 
-        <div className="App">
-            <button type="button" onClick={() => { dispatch(filterNewCars()) }}>Recent Cars</button>
-            <button type="button" onClick={() => { dispatch(filterByYear(2005)) }}>Filter old cars</button>
-            <button type="button" onClick={() => { dispatch(filterCarsOnSale()) }}> Filter cars on sale</button>
-            <button type="button" onClick={() => { dispatch(resetFilters()) }}>Reset filters</button>
-
-            {cars.map((car) => (<div key={car.id}>
-                <CarCard car={car}></CarCard>
-            </div>))}
-        </div>
+        <motion.div layout className={styles.carListContainer}>
+            <AnimatePresence>
+                {cars.map((car) => (<div key={car.id}>
+                    <CarCard car={car}></CarCard>
+                </div>))}
+            </AnimatePresence>
+        </motion.div>
     );
 }

@@ -1,16 +1,22 @@
 .carCard {
     font-family: 'Poppins', sans-serif;
-    padding: 15px 30px;
-    width: fit-content;
+    padding-bottom: 25px;
+    margin-bottom: 20px;
+    width: 250px;
     border-radius: 8px;
-
-    border: 1px solid black;
+    flex-direction: column;
+    background-color: rgba(#ffff, 0.88);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
-
-    gap: 40px;
+    height: 250px;
+    gap: 30px;
+    overflow: hidden;
 
     .carTitle {
+        text-align: center;
+        padding: 25px 0 10px;
+        background-color: #FDCF43;
+
         h3 {
             font-weight: 600;
             font-size: 18px;
@@ -26,13 +32,14 @@
     .carSpecs {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-
+        padding: 0px 25px;
         gap: 15px;
+        margin: 0 auto;
 
         .spec {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             margin-right: 10px;
 
             p {

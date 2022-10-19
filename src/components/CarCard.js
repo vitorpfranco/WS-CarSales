@@ -6,11 +6,12 @@ import fixCarValue from '../utils/fixCarValue'
 import { GiCarDoor } from "react-icons/gi";
 
 import { GoCalendar } from "react-icons/go";
+import { motion } from 'framer-motion'
 
 export default function CarCard({ car }) {
 
     return (
-        <div className={styles.carCard}>
+        <motion.div layout exit={{ opacity: 0 }} className={styles.carCard}>
             <div className={styles.carTitle}>
                 <h3 className="teste">{car.nome_modelo.toUpperCase()}</h3>
                 <h4>{car.marca_nome.toUpperCase()}</h4>
@@ -36,6 +37,6 @@ export default function CarCard({ car }) {
             <div className={styles.carPrice}>
                 <p>R$ {fixCarValue(car.valor_fipe)},00</p>
             </div>
-        </div>
+        </motion.div>
     )
 }

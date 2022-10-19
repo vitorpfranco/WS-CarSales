@@ -32,11 +32,23 @@ export const carSlice = createSlice({
             const carsOnSale = cars.slice(0, 3)
             state.value.filteredCars = carsOnSale
         },
+        searchFilter: (state, action) => {
+            const cars = state.value.cars
+            const search = action.payload.toLowerCase()
+            const filteredCars = cars.filter((car) => {
+                if (search === '') { return car }
+                else if (car.nome_modelo.toLowerCase().includes(search) || car.marca_nome.toLowerCase().includes(search)) {
+                    return car
+                }
+            })
+            state.value.filteredCars = filteredCars
+
+        },
         resetFilters: (state) => {
             state.value.filteredCars = state.value.cars
         }
     },
 })
-export const { setCars, filterNewCars, filterByYear, resetFilters, filterCarsOnSale } = carSlice.actions
+export const { setCars, filterNewCars, filterByYear, resetFilters, filterCarsOnSale, searchFilter } = carSlice.actions
 
 export default carSlice.reducer
