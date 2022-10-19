@@ -52,6 +52,11 @@
                     &:active {
                         transform: translateY(2px)
                     }
+
+                    &.active {
+                        background-color: rgba(#000040, 0.8);
+                        color: #ffff;
+                    }
                 }
             }
 
@@ -59,6 +64,8 @@
     }
 
 }
+
+
 
 .advertise {
     position: fixed;
@@ -79,4 +86,21 @@
     &:hover {
         transform: scale(1.2);
     }
+}
+
+.toast {
+    list-style-type: none;
+    padding: 10px 10px;
+    width: 300px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    position: fixed;
+    color: white;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #323232;
+    z-index: 1000;
+    text-align: center;
+    border-radius: 10px;
 }

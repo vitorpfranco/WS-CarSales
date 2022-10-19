@@ -11,7 +11,7 @@ import { motion } from 'framer-motion'
 export default function CarCard({ car }) {
 
     return (
-        <motion.div layout exit={{ opacity: 0 }} className={styles.carCard}>
+        <motion.div layout className={styles.carCard}>
             <div className={styles.carTitle}>
                 <h3 className="teste">{car.nome_modelo.toUpperCase()}</h3>
                 <h4>{car.marca_nome.toUpperCase()}</h4>

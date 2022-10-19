@@ -5,7 +5,8 @@ export const carSlice = createSlice({
     initialState: {
         value: {
             cars: [],
-            filteredCars: []
+            filteredCars: [],
+            filterApplied: ''
         }
     },
     reducers: {
@@ -18,6 +19,7 @@ export const carSlice = createSlice({
             cars.sort((x, y) => { return Number(y.timestamp_cadastro) - Number(x.timestamp_cadastro) })
             const newCars = cars.slice(0, 5)
             state.value.filteredCars = newCars
+            state.value.filterApplied = "NewCars"
         },
         filterByYear: (state, action) => {
             const cars = state.value.cars
@@ -25,12 +27,15 @@ export const carSlice = createSlice({
                 return car.ano < action.payload
             })
             state.value.filteredCars = filteredCars
+            state.value.filterApplied = 'ByYear'
+
         },
         filterCarsOnSale: (state) => {
             const cars = state.value.cars
             cars.sort((x, y) => { return fixCarValue(x.valor_fipe) - fixCarValue(y.valor_fipe) })
             const carsOnSale = cars.slice(0, 3)
             state.value.filteredCars = carsOnSale
+            state.value.filterApplied = 'OnSale'
         },
         searchFilter: (state, action) => {
             const cars = state.value.cars
@@ -42,10 +47,13 @@ export const carSlice = createSlice({
                 }
             })
             state.value.filteredCars = filteredCars
+            state.value.filterApplied = ''
 
         },
         resetFilters: (state) => {
             state.value.filteredCars = state.value.cars
+            state.value.filterApplied = ''
+
         }
     },
 })

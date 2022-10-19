@@ -1,0 +1,106 @@
+.overlay {
+    background-color: rgba(black, 0.6);
+    position: fixed;
+    inset: 0;
+}
+
+.content {
+    position: fixed;
+    width: 100%;
+    max-width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    overflow-y: auto;
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+
+    .title {
+        padding: 20px 8px 15px;
+        background-color: #000040;
+        font-size: 24px;
+        color: white;
+        position: relative;
+        text-align: center;
+
+        .closeButton {
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+            position: absolute;
+            right: 10px;
+            border: none;
+            outline: none;
+            background: none;
+        }
+    }
+
+    form {
+        background-color: #D9D9E4;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 15px 25px 28px;
+
+        .equalFields {
+            display: flex;
+            gap: 16px;
+        }
+
+        .fieldContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            position: relative;
+            width: 100%;
+
+            input,
+            select {
+                padding: 8px 24px;
+                font-family: 'Poppins', sans-serif;
+                border: 1px solid var(--gray-2);
+                border-radius: 8px;
+                width: 100%;
+                outline: none;
+            }
+
+            p {
+                color: rgb(167, 10, 10);
+                font-size: 12px;
+            }
+
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            background-color: #000040;
+            padding: 5px 8px;
+            color: #FDCF43;
+            cursor: pointer;
+
+            &:active {
+                transform: translateY(2px)
+            }
+        }
+    }
+}
+
+.helpText {
+    font-size: 12px;
+
+}
+
+
+//removing input number arrows
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}

@@ -1,0 +1,46 @@
+[
+    {
+        "marca_id": 1,
+        "marca_nome": "TOYOTA"
+    },
+    {
+        "marca_id": 2,
+        "marca_nome": "FORD"
+    },
+    {
+        "marca_id": 3,
+        "marca_nome": "VW"
+    },
+    {
+        "marca_id": 4,
+        "marca_nome": "FIAT"
+    },
+    {
+        "marca_id": 5,
+        "marca_nome": "CHEVROLET"
+    },
+    {
+        "marca_id": 6,
+        "marca_nome": "CRITROEN"
+    },
+    {
+        "marca_id": 7,
+        "marca_nome": "HONDA"
+    },
+    {
+        "marca_id": 8,
+        "marca_nome": "HYUNDAI"
+    },
+    {
+        "marca_id": 9,
+        "marca_nome": "JEEP"
+    },
+    {
+        "marca_id": 10,
+        "marca_nome": "SUZUKI"
+    },
+    {
+        "marca_id": 11,
+        "marca_nome": "CHERY"
+    }
+]
