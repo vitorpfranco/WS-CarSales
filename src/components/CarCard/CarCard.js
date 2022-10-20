@@ -14,7 +14,6 @@ import { motion } from 'framer-motion'
 export default function CarCard({ car }) {
     const date = dateDistance(car.timestamp_cadastro)
     const carPrice = fixCarValue(car.valor_fipe).toLocaleString('pt-br')
-
     return (
         <motion.div layout className={styles.carCard}>
             <div className={styles.carTitle}>

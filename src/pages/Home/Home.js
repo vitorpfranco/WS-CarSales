@@ -1,22 +1,31 @@
 import styles from './Home.module.scss'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as Toast from '@radix-ui/react-toast';
 
-import { filterNewCars, filterByYear, resetFilters, filterCarsOnSale, searchFilter } from '../../store/carSlice'
+import carService from '../../services/carService';
+import { filterNewCars, filterByYear, resetFilters, filterCarsOnSale, searchFilter, setCars } from '../../store/carSlice'
 
 import CarForm from '../../components/CarForm/CarForm'
 import CarList from '../../components/CarList/CarList'
 
 import { BiSearch, BiX } from "react-icons/bi";
-
-
+import carPhoto from '../../assets/car.png'
 export default function Home() {
     const [openForm, setOpenForm] = useState(false);
     const [openToast, setOpenToast] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
+    const dispatch = useDispatch()
+
+    const fetchCars = async () => {
+        const cars = await carService.getCars()
+        dispatch(setCars(cars))
+    }
+    useEffect(() => {
+        fetchCars();
+    }, [])
 
     function handleSearchOnChange(term) {
         setSearchTerm(term)
@@ -27,7 +36,6 @@ export default function Home() {
         dispatch(resetFilters())
     }
 
-    const dispatch = useDispatch()
 
     const filterApplied = useSelector((state) => state.cars.value.filterApplied)
 
@@ -35,7 +43,7 @@ export default function Home() {
         <div className={styles.homeContainer}>
             <div className={styles.homeContent}>
                 <h1>ENCONTRE SEU CARRO</h1>
-                <img src="car.png" alt="car" />
+                <img src={carPhoto} alt="car" />
                 <div className={styles.filtersContainer}>
                     <div className={styles.searchFilter}>
                         <input id="searchFilter" type="text" value={searchTerm} onChange={(event) => { handleSearchOnChange(event.target.value) }} placeholder="Procure por marca ou nome" />
@@ -51,7 +59,10 @@ export default function Home() {
                         <button type="button" className={styles.clearFilter} onClick={() => { handleClearFilter() }}>Limpar Filtros</button>
                     </div>
                 </div>
-                <CarList />
+                <div className={styles.carListContainer}>
+                    <CarList />
+                </div>
+
                 <Dialog.Root open={openForm} onOpenChange={setOpenForm}>
                     <Dialog.Trigger className={styles.advertise}>
                         Quero Vender
