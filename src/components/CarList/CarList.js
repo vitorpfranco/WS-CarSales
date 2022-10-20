@@ -1,16 +1,20 @@
+import styles from './CarList.module.scss'
+
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import CarCard from "../CarCard/CarCard";
 import { setCars } from '../../store/carSlice'
-import styles from './CarList.module.scss'
-import { motion, AnimatePresence, MotionContext } from 'framer-motion'
+
 import carService from "../../services/carService"
 import brandService from "../../services/brandService";
+
+import CarCard from "../CarCard/CarCard";
+
 export default function CarList() {
     const cars = useSelector((state) => state.cars.value.filteredCars)
     const [brands, setBrands] = useState([])
 
     const dispatch = useDispatch()
+
     const fetchBrands = async () => {
         const brands = await brandService.getBrands()
         setBrands(brands)
@@ -19,16 +23,15 @@ export default function CarList() {
         const cars = await carService.getCars()
         dispatch(setCars(cars))
     }
+    useEffect(() => {
+        fetchBrands();
+        fetchCars();
+    }, [])
 
     function verifyExistingBrand(brand) {
         const existBoolean = cars.filter((car) => { return car.marca_nome === brand.marca_nome }).length > 0
         return existBoolean
     }
-
-    useEffect(() => {
-        fetchBrands();
-        fetchCars();
-    }, [])
 
     return (
         <div className={styles.carListContainer}>

@@ -5,14 +5,20 @@
     gap: 10px;
     padding: 20px 40px;
     border-bottom: 1px solid grey;
+    align-items: center;
 
     .carTitle {
         width: 150px;
 
         h3 {
-            font-weight: 500;
-            font-size: 16px;
+
             margin-bottom: 3px;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 12px;
+            color: rgba(black, 0.5)
         }
     }
 

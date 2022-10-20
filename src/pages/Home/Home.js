@@ -1,15 +1,17 @@
 import styles from './Home.module.scss'
-import CarForm from '../../components/CarForm/CarForm'
-import CarList from '../../components/CarList/CarList'
 
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
 import * as Dialog from '@radix-ui/react-dialog'
 import * as Toast from '@radix-ui/react-toast';
-import { BiSearch, BiX } from "react-icons/bi";
 
 import { filterNewCars, filterByYear, resetFilters, filterCarsOnSale, searchFilter } from '../../store/carSlice'
+
+import CarForm from '../../components/CarForm/CarForm'
+import CarList from '../../components/CarList/CarList'
+
+import { BiSearch, BiX } from "react-icons/bi";
+
 
 export default function Home() {
     const [openForm, setOpenForm] = useState(false);

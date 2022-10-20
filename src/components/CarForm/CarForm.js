@@ -1,10 +1,13 @@
-import * as Dialog from '@radix-ui/react-dialog'
-import { useEffect, useState } from 'react'
 import styles from './CarForm.module.scss'
-import capitalize from '../../utils/capitalize'
+
+import { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import * as Dialog from '@radix-ui/react-dialog'
+
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import capitalize from '../../utils/capitalize'
 import brandService from '../../services/brandService';
 
 const schema = yup.object({
