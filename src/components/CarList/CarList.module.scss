@@ -4,6 +4,11 @@
     gap: 20px;
     justify-items: center;
 } */
+@mixin Medium {
+    @media screen and (max-width:900px) {
+        @content;
+    }
+}
 
 .carListContainer {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
@@ -17,4 +22,9 @@
     font-weight: 700;
     font-size: 20px;
     color: #2C2C61;
+
+    @include Medium {
+        padding: 15px 10px;
+    }
+
 }

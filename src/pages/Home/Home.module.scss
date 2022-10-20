@@ -1,8 +1,18 @@
+@mixin Medium {
+    @media screen and (max-width:900px) {
+        @content;
+    }
+}
+
 .homeContainer {
     font-family: 'Poppins', sans-serif;
     background-color: #D9D9E4;
     padding: 40px 40px;
     min-height: calc(100vh - 150px);
+
+    @include Medium {
+        padding: 20px 10px;
+    }
 
     .homeContent {
         display: flex;
@@ -16,6 +26,11 @@
             font-weight: 600;
             font-size: 48px;
             color: #000040;
+
+            @include Medium {
+                font-size: 36px;
+            }
+
         }
 
         .filtersContainer {
@@ -110,6 +125,11 @@
     &:hover {
         transform: scale(1.2);
     }
+
+    @include Medium {
+        right: 15px
+    }
+
 }
 
 .toast {
