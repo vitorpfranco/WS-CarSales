@@ -1,10 +1,11 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { useEffect, useState } from 'react'
 import styles from './CarForm.module.scss'
-import capitalize from '../utils/capitalize'
+import capitalize from '../../utils/capitalize'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import brandService from '../../services/brandService';
 
 const schema = yup.object({
     marca_id: yup.number().typeError('Campo Obrigatório').required('Campo Obrigatório'),
@@ -22,12 +23,13 @@ export default function ProjectModal({ setOpenForm, setOpenToast }) {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema)
     });
+    const fetchBrands = async () => {
+        const brands = await brandService.getBrands()
+        setBrands(brands)
+    }
 
     useEffect(() => {
-        fetch('mocks/carsBrand.json').then((res) => { return res.json() }).then((data) => {
-            setBrands(data)
-        })
-
+        fetchBrands()
     }, [])
 
     const onSubmit = (data) => {

@@ -1,0 +1,20 @@
+/* .carListContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-items: center;
+} */
+
+.carListContainer {
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.brandTitle {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffff;
+    padding: 15px 25px;
+    border-bottom: 1px solid black;
+    font-weight: 700;
+    font-size: 20px;
+    color: #2C2C61;
+}
