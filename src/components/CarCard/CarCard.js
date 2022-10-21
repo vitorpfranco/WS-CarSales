@@ -1,4 +1,5 @@
 import styles from './CarCard.module.scss'
+import PropTypes from 'prop-types'
 
 import capitalize from '../../utils/capitalize';
 import fixCarValue from '../../utils/fixCarValue'
@@ -11,11 +12,11 @@ import { GoCalendar } from "react-icons/go";
 
 import { motion } from 'framer-motion'
 
-export default function CarCard({ car }) {
+function CarCard({ car, bgColor, carBgColor, textColor, border }) {
     const date = dateDistance(car.timestamp_cadastro)
     const carPrice = fixCarValue(car.valor_fipe).toLocaleString('pt-br')
     return (
-        <motion.div layout className={styles.carCard}>
+        <motion.div layout className={styles.carCard} style={{ backgroundColor: `${bgColor || carBgColor}`, color: `${textColor}`, borderBottom: `${border}` }} >
             <div className={styles.carTitle}>
                 <h3 className="teste">{car.nome_modelo.toUpperCase()}</h3>
                 <p>{date}</p>
@@ -44,3 +45,14 @@ export default function CarCard({ car }) {
         </motion.div>
     )
 }
+
+
+CarCard.propTypes = {
+    car: PropTypes.object,
+    bgColor: PropTypes.string,
+    carBgColor: PropTypes.string,
+    textColor: PropTypes.string,
+    border: PropTypes.string,
+}
+
+export default CarCard

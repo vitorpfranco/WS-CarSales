@@ -1,26 +1,31 @@
-/* .carListContainer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    justify-items: center;
-} */
 @mixin Medium {
     @media screen and (max-width:900px) {
         @content;
     }
 }
 
-.brandTitle {
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffff;
-    padding: 15px 25px;
-    border-bottom: 1px solid black;
-    font-weight: 700;
-    font-size: 20px;
-    color: #2C2C61;
+.carListContainer {
+    display: flex;
+    flex-direction: column;
+}
 
-    @include Medium {
-        padding: 15px 10px;
+.brandCars {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+
+    .brandTitle {
+        font-family: 'Poppins', sans-serif;
+        padding: 15px 25px;
+        border-bottom: 1px solid black;
+        font-weight: 700;
+        font-size: 20px;
+        color: #2C2C61;
+        margin: 0;
+
+        @include Medium {
+            padding: 15px 10px;
+        }
+
     }
-
 }

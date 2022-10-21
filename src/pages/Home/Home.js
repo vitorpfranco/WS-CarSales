@@ -18,6 +18,7 @@ export default function Home() {
     const [openToast, setOpenToast] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
     const dispatch = useDispatch()
+    const cars = useSelector((state) => state.cars.value.filteredCars)
 
     const fetchCars = async () => {
         const cars = await carService.getCars()
@@ -60,7 +61,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className={styles.carListContainer}>
-                    <CarList />
+                    <CarList cars={cars} />
                 </div>
 
                 <Dialog.Root open={openForm} onOpenChange={setOpenForm}>
