@@ -11,8 +11,13 @@ function CarList({ cars = [''], title = true, titleColor = '#2C2C61', titleBgCol
     const [brands, setBrands] = useState([])
 
     const fetchBrands = async () => {
-        const brands = await brandService.getBrands()
-        setBrands(brands)
+        try {
+            const brands = await brandService.getBrands()
+            setBrands(brands)
+        }
+        catch (err) {
+            console.log(err)
+        }
     }
 
     useEffect(() => {

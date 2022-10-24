@@ -21,8 +21,13 @@ export default function Home() {
     const cars = useSelector((state) => state.cars.value.filteredCars)
 
     const fetchCars = async () => {
-        const cars = await carService.getCars()
-        dispatch(setCars(cars))
+        try {
+            const cars = await carService.getCars()
+            dispatch(setCars(cars))
+        }
+        catch (err) {
+            console.log(err)
+        }
     }
     useEffect(() => {
         fetchCars();

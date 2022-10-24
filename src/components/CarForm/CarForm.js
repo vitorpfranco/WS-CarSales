@@ -27,8 +27,14 @@ export default function ProjectModal({ setOpenForm, setOpenToast }) {
         resolver: yupResolver(schema)
     });
     const fetchBrands = async () => {
-        const brands = await brandService.getBrands()
-        setBrands(brands)
+        try {
+            const brands = await brandService.getBrands()
+            setBrands(brands)
+        }
+        catch (err) {
+            console.log(err)
+        }
+
     }
 
     useEffect(() => {
